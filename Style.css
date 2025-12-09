@@ -1,0 +1,225 @@
+/*
+----------------------------------
+KIRA STYLE SHEET: HYPER-ANIMATED GOTHIC
+----------------------------------
+*/
+
+:root {
+    --color-bg: #050505;
+    --color-text: #e0e0e0;
+    --color-blood: #8a0303;
+    --color-gold: #c5a005;
+    --color-iron: #2b2b2b;
+    --color-royal: #2e003e;
+    --font-primary: 'Times New Roman', serif;
+    --font-secondary: 'Arial', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   GOTHIC ANIMATION KEYFRAMES (New & Updated)
+   ========================================= */
+
+/* 1. Slow Rise from Darkness (Scroll Reveal) */
+@keyframes gothicRise {
+    from { opacity: 0; transform: translateY(50px) scale(0.95); filter: blur(5px); }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* 2. Candle Flicker / unstable power */
+@keyframes flicker {
+    0%, 100% { opacity: 1; text-shadow: 0 0 5px var(--color-gold); }
+    41% { opacity: 0.8; }
+    42% { opacity: 0.1; }
+    43% { opacity: 1; }
+    45% { opacity: 0.3; }
+    46% { opacity: 1; }
+}
+
+/* 3. Slow Throbbing Glow (Pulse) - Used for background/photo */
+@keyframes gothicPulse {
+    0%, 100% { box-shadow: 0 0 10px currentColor; }
+    50% { box-shadow: 0 0 40px currentColor, 0 0 20px inset currentColor; }
+}
+ 
+/* 4. Text Shadow Pulse (New) - Used for h2 headings */
+@keyframes shadowPulse {
+    0%, 100% { text-shadow: 0 0 5px var(--color-gold); }
+    50% { text-shadow: 0 0 20px var(--color-gold), 0 0 10px var(--color-blood); }
+}
+ 
+/* 5. Creeping Background Pattern */
+@keyframes backgroundCreep {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* 6. Blood Border Pulse (New) */
+@keyframes borderBloodPulse {
+    0% { border-color: var(--color-iron); box-shadow: 0 0 20px rgba(0, 0, 0, 0); }
+    50% { border-color: var(--color-blood); box-shadow: 0 0 30px var(--color-blood); }
+    100% { border-color: var(--color-iron); box-shadow: 0 0 20px rgba(0, 0, 0, 0); }
+}
+
+/* =========================================
+   BASE STYLES & PARALLAX
+   ========================================= */
+ 
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+    text-align: center;
+    /* Global Frame with Blood Pulse */
+    border: 10px solid var(--color-iron);
+    animation: borderBloodPulse 15s infinite alternate ease-in-out;
+    overflow-x: hidden;
+    /* PARALLAX EFFECT */
+    background-attachment: fixed;
+    background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 4px, rgba(255, 255, 255, 0.03) 4px, rgba(255, 255, 255, 0.03) 6px, transparent 6px, transparent 8px);
+    background-size: 8px 8px;
+}
+
+/* === Typography === */
+h1, h2, h3 {
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    border: 2px solid;
+    padding: 10px;
+    display: inline-block;
+    background: #000;
+}
+
+h1 { 
+    font-size: 4rem; color: var(--color-gold); border-color: var(--color-gold); margin-bottom: 20px;
+    animation: flicker 3s infinite alternate-reverse;
+}
+ 
+h2 { 
+    font-size: 3rem; margin-bottom: 30px; width: 80%;
+    /* Apply Shadow Pulse to all section headings */
+    animation: shadowPulse 5s infinite alternate ease-in-out; 
+}
+h3 { font-size: 1.5rem; color: #fff; border: none; background: none; }
+ 
+p {
+    font-size: 1.2rem; max-width: 800px; margin: 0 auto 20px;
+    background-color: rgba(0,0,0,0.9); padding: 20px; border: 1px solid #fff;
+}
+
+/* === Header & Nav === */
+.kira-photo {
+    /* ... existing styles ... */
+    animation: none; /* Remove Gothic Pulse here to avoid conflict */
+}
+ 
+/* === BASE SECTION STYLE for Scroll Reveal === */
+.animate-block {
+    opacity: 0;
+    transform: translateY(50px); filter: blur(5px);
+    transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-block.is-visible {
+    opacity: 1; transform: translateY(0); filter: blur(0);
+}
+ 
+/* =========================================
+   SECTIONS (Applying Subtle Warping/Waving)
+   ========================================= */
+
+/* 1. THE SIN */
+#the-problem {
+    background-color: #2b0000;
+    background-image: repeating-linear-gradient(45deg, #2b0000, #2b0000 20px, #500000 20px, #500000 40px);
+    transition: background-size 5s ease-in-out;
+}
+#the-problem:hover {
+    background-size: 80px 80px; /* Subtle change on hover */
+}
+#the-problem .container {
+    background-color: rgba(0, 0, 0, 0.9); border-color: var(--color-blood);
+    box-shadow: 0 0 0 10px #000;
+}
+
+/* 2. THE ATONEMENT */
+#the-solution {
+    background-color: #1a1a1a;
+    background-image: linear-gradient(90deg, #000 50%, transparent 50%);
+    background-size: 50px 100%;
+}
+#the-solution .container {
+    background-color: #222; border: 10px ridge #555;
+    transition: transform 1s ease-in-out;
+}
+#the-solution .container:hover {
+    transform: rotateZ(1deg) scale(1.02); /* Subtle tilt */
+}
+ 
+/* 3. THE DOCTRINE */
+#the-ideology {
+    background-color: var(--color-royal);
+    background-image: linear-gradient(135deg, #440055 25%, transparent 25%), 
+                                     linear-gradient(225deg, #440055 25%, transparent 25%), 
+                                     linear-gradient(45deg, #440055 25%, transparent 25%), 
+                                     linear-gradient(315deg, #440055 25%, transparent 25%);
+    background-position: 20px 0, 20px 0, 0 0, 0 0;
+    background-size: 40px 40px;
+    animation: backgroundCreep 30s linear infinite;
+}
+#the-ideology .container {
+    background-color: #1a0024; border: 10px double var(--color-gold);
+}
+#the-ideology li {
+    /* Animated list items (already present) */
+    transition: transform 0.3s ease;
+}
+
+/* 4. THE ETERNAL REIGN */
+#the-future {
+    background-color: #000;
+    background-image: repeating-radial-gradient(circle at center, #000, #000 10px, #332a00 10px, #332a00 20px);
+    animation: gothicPulse 10s infinite alternate;
+    color: var(--color-gold);
+}
+#the-future .container {
+    background-color: #000; border: 5px solid var(--color-gold);
+    animation: gothicPulse 4s infinite alternate ease-in-out;
+}
+ 
+/* === Footer === */
+footer { 
+    background: #000; padding: 40px; border-top: 5px solid var(--color-blood); color: #666;
+    transition: background-color 1s;
+}
+footer:hover { background-color: #110000; }
+
+/* --- Existing styles included for completeness and context --- */
+nav { position: sticky; top: 0; z-index: 1000; background: var(--color-blood); border-bottom: 5px solid var(--color-gold); padding: 10px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
+nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; }
+nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem; border: 2px solid #fff; padding: 5px 15px; background: #000; transition: all 0.5s ease-in-out; }
+nav a:hover { background: var(--color-gold); color: #000; border-color: var(--color-blood); box-shadow: 0 0 15px var(--color-gold); }
+header { height: 100vh; position: relative; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 10px solid var(--color-blood); }
+.kira-photo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; filter: grayscale(100%) contrast(120%); }
+.header-content { z-index: 2; border: 10px double var(--color-blood); padding: 40px; background: rgba(0,0,0,0.8); animation: gothicRise 2s ease-out forwards; }
+section { padding: 100px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 10px solid #000; overflow: hidden; }
+.container { width: 100%; max-width: 1000px; padding: 40px; border: 5px solid; position: relative; z-index: 2; }
+.section-quote { font-style: italic; font-size: 1.4rem; margin-top: 30px; border: 4px double; padding: 15px; display: inline-block; background: #000; }
+.video-container { width: 100%; border: 5px solid #fff; background: #000; padding: 5px; box-shadow: 0 0 20px #fff; margin: 30px 0; transition: all 0.8s ease; }
+.video-container:hover { box-shadow: 0 0 40px var(--color-blood); border-color: var(--color-blood); }
+video { width: 100%; display: block; }
+#the-solution .container { background-color: #222; border: 10px ridge #555; }
+#the-solution h2 { color: #aaa; border-color: #aaa; background: #000; }
+#the-ideology h2 { color: var(--color-gold); border-color: var(--color-gold); background: #2e003e; }
+#the-ideology ul { list-style: none; margin-top: 20px; }
+#the-ideology li { background: var(--color-gold); color: #000; padding: 15px; margin: 10px 0; font-weight: bold; border: 2px solid #000; transition: transform 0.3s ease; }
+#the-ideology li:hover { transform: scale(1.05) translateX(10px); background: #fff; }
+#the-future h2 { color: #fff; border: 5px solid var(--color-gold); background: #000; }
+#the-future a { display: inline-block; margin-top: 20px; padding: 15px 30px; background: var(--color-gold); color: #000; text-decoration: none; font-weight: bold; font-family: var(--font-primary); font-size: 1.5rem; border: 3px solid #fff; transition: all 0.5s; position: relative; overflow: hidden; }
+#the-future a:hover { background: var(--color-blood); color: #fff; border-color: var(--color-gold); box-shadow: 0 0 30px var(--color-blood); }
